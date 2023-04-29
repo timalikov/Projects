@@ -1,50 +1,41 @@
-import random
+import pygame
 
-def print_table(t):
-    for i in t:
-        print(i)
+class Game2048:
+    def __init__(self) -> None:
+        self.N = 4
+        self.cellSize = 100
+        self.gap = 5
+        self.windowBgColor = (187, 173, 160)
+        self.blockSize = self.cellSize + self.gap * 2
 
-def generate_first_2(table):
-    a, b = random.randint(0, 3), random.randint(0, 3)
-    table[a][b] = 2
-    a1, b1 = random.randint(0, 3), random.randint(0, 3)
-    if a1 != a or b1 != b:
-        table[a1][b1] = 2
-    else:
-        while a == a1 and b == b1:
-            a1, b1 = random.randint(0, 3), random.randint(0, 3)
-        table[a1][b1]
+        self.windowWidth = self.blockSize * 4
+        self.windowHeight = self.windowWidth
 
+        pygame.init()
 
-table = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-]
+        self.window = pygame.display.set_mode((self.windowWidth, self.windowHeight))
+        pygame.display.set_caption("2048")
 
-rows = range(4)
+    def drawBoard(self):
+        self.window.fill(self.windowBgColor)
 
-running = True
-while running:
-    generate_first_2(table)
-    print_table(table)
+        for r in range(self.N):
+            rectY = self.blockSize * r + self.gap
+            for c in range(self.N):
+                rectX = self.blockSize * c + self.gap
 
-    turn = input("Make your turn(w/a/s/d) or \"quit\" for quit: ")
-    while turn != "quit":
-        if turn == 'w':
-            for i in range(1, 4):
-                for j in range(4):
-                    if table[i][j] != 0:
-                        for up in range(0, i, -1):
-                            if table[up][j] == table[i][j]:
-                                table[i][j] = 0
-                                table[up][j] *= 2
-                            elif table[up][j] == 0:
-                                table[up][j] = table[i][j] 
-                                table[i][j] = 0
-        print_table(table)
-        turn = input("Make your turn(w/a/s/d) or \"quit\" for quit: ")
+                pygame.draw.rect(
+                    self.window,
+                    (0,0,0),
+                    pygame.Rect(rectX, rectY, self.cellSize, self.cellSize)
+                )
 
+    def play(self):
+        running = True
+        while running:
+            self.drawBoard()
+            pygame.display.update()
 
-    break    
+if __name__ == "__main__":
+    game = Game2048()
+    game.play()
