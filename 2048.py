@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import pygame
 from colors import colors
 
@@ -86,3 +87,4 @@ if __name__ == "__main__":
     game = Game2048()
     game.play()
     pygame.quit()
+=======
