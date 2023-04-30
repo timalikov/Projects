@@ -13,9 +13,9 @@ class Game2048:
         self.font = pygame.font.SysFont("Arial", 36)
         self.board = [
             [0, 0, 0, 0],
-            [0, 0, 2, 0],
-            [0, 0, 2, 0],
-            [0, 0, 2, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
         ]
 
         self.windowWidth = self.blockSize * 4
@@ -57,7 +57,7 @@ class Game2048:
                     value_len = len(str(value))
                     self.font = pygame.font.Font('freesansbold.ttf', 48 - (5 * value_len))
                     value_text = self.font.render(str(value), True, value_color)
-                    text_rect = value_text.get_rect(center = (self.blockSize * c + self.gap, self.blockSize * r + self.gap))
+                    text_rect = value_text.get_rect(center = (self.blockSize * c + self.gap + self.cellSize/2, self.blockSize * r + self.gap + self.cellSize/2))
                     self.window.blit(value_text, text_rect)
 
 
