@@ -1,0 +1,44 @@
+<app-nav-bar></app-nav-bar>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+  <div class="product-list">
+    <div class="product-item" *ngFor="let f of furniture">
+      <a [routerLink]="['/furniture', f.id]">
+      <img class="product-image" [src]="f.image" alt="Product Image">
+      <div class="product-name text-center">{{ f.title }}</div></a>
+      <div class="product-price">{{ f.price }} $</div>
+      <div class="panel-footer text-center"><a [routerLink]="['/order']">Buy now!</a></div>
+      <button class="btn btn-primary" style="margin-left: 30%" (click)="addToCart(f)">Add to Cart</button>
+      <p class="text-center" *ngIf="successMessage === 'Product \'' + f.title + '\' added to cart!'" class="success-message">Product added to cart!</p>
+      <div class="product-description" [ngClass]="{'expanded': isExpanded(f)}">
+        {{ getDescriptionText(f) }} <br>
+        <span class="view-more-button" *ngIf="shouldDisplayViewMore(f)" (click)="toggleExpanded(f)">View More</span>
+      </div>
+      <div class="product-description" *ngIf="isExpanded(f)">{{ f.description }}
+        <span class="view-more-button" (click)="toggleExpanded(f)">View More</span>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- 
+
+<div class="row">
+  <div class="col-sm-4" *ngFor="let f of furniture">
+    <div class="panel panel-primary">
+      <div class="panel-heading">{{ f.title }}</div>
+      <div class="panel-body">
+        <img src="{{f.image}}" class="img-responsive" style="width:100%" alt="Image">
+      </div>
+      <div class="panel-footer">{{ f.description }}</div>
+      <div class="panel-footer">{{ f.price }}€ <a [routerLink]="['/furniture', f.id]">Buy now!</a></div>
+    </div>
+  </div>
+</div> -->

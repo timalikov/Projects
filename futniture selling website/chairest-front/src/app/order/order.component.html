@@ -1,0 +1,22 @@
+<app-nav-bar></app-nav-bar>
+
+<div>
+  <h2>Product</h2>
+  <h3>{{ product.title }}</h3>
+  <p>Description: {{ product.description }}</p>
+  <img [src]="product.image" alt="Product Image">
+
+  <h2>User</h2>
+  <h3>{{ user.username }}</h3>
+  <!-- Add other user details as needed -->
+
+  <button (click)="buyProduct()">Buy Product</button>
+</div>
+
+
+
+
+<br><br><br><br><br>
+<footer class="container-fluid text-center">
+  <p>Copyright &copy; ChaiRest 2023</p>
+</footer>

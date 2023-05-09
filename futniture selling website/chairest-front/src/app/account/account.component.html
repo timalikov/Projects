@@ -1,0 +1,33 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container">
+  <!-- user.component.html -->
+  <header class="header">
+    <img src="https://jct600vehicleleasingsolutions.co.uk/wp-content/uploads/2020/07/avatar-placeholder.png" alt="Avatar" class="avatar">
+    <div *ngIf="isLoggedIn">
+      <h1>Welcome, {{ user.username }}!</h1>
+    </div>
+    
+  </header>
+  <div *ngIf="!isLoggedIn">
+    <div class="button-container">
+      <a routerLink="/auth/login" class="button">Login</a>
+      <a routerLink="/auth/register" class="button">Register</a>
+    </div>
+  </div>
+
+
+
+</div><br>
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<footer class="container-fluid text-center">
+  <p>Copyright &copy; ChaiRest 2023</p>
+</footer>

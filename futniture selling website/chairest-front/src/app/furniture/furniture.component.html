@@ -1,0 +1,91 @@
+<app-nav-bar></app-nav-bar>
+
+<app-banner></app-banner>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="product-list">
+    <div class="product-item" *ngFor="let f of furniture">
+      <a [routerLink]="['/furniture', f.id]">
+      <img class="product-image" [src]="f.image" alt="Product Image">
+      <div class="product-name text-center">{{ f.title }}</div></a>
+      <div class="product-price">{{ f.price }} $</div>
+      <div class="panel-footer text-center"><a [routerLink]="['/order']">Buy now!</a></div>
+      <button class="btn btn-primary" style="margin-left: 30%" (click)="addToCart(f)">Add to Cart</button>
+      <p class="text-center" *ngIf="successMessage === 'Product \'' + f.title + '\' added to cart!'" class="success-message">Product added to cart!</p>
+      <div class="product-description" [ngClass]="{'expanded': isExpanded(f)}">
+        {{ getDescriptionText(f) }} <br>
+        <span class="view-more-button" *ngIf="shouldDisplayViewMore(f)" (click)="toggleExpanded(f)">View More</span>
+      </div>
+      <div class="product-description" *ngIf="isExpanded(f)">{{ f.description }}
+        <span class="view-more-button" (click)="toggleExpanded(f)">View More</span>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+
+<!--
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">BLACK FRIDAY DEAL</div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-danger">
+        <div class="panel-heading">BLACK FRIDAY DEAL</div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">BLACK FRIDAY DEAL</div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">BLACK FRIDAY DEAL</div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">BLACK FRIDAY DEAL</div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">BLACK FRIDAY DEAL</div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<br><br>
+
+<footer class="container-fluid text-center">
+  <p>Copyright &copy; ChaiRest 2023</p>
+</footer>

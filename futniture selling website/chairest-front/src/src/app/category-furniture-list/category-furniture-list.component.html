@@ -1,0 +1,17 @@
+<app-banner></app-banner>
+<app-nav-bar></app-nav-bar>
+
+
+
+<div class="row">
+  <div class="col-sm-4" *ngFor="let f of furniture">
+    <div class="panel panel-primary">
+      <div class="panel-heading">{{ f.title }}</div>
+      <div class="panel-body">
+        <img src="{{f.image}}" class="img-responsive" style="width:100%" alt="Image">
+      </div>
+      <div class="panel-footer">{{ f.description }}</div>
+      <div class="panel-footer">{{ f.price }}€ <a [routerLink]="['/furniture', f.id]">Buy now!</a></div>
+    </div>
+  </div>
+</div>

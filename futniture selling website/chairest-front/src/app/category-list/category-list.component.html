@@ -1,0 +1,66 @@
+<app-nav-bar></app-nav-bar>
+
+
+<div class="container">
+
+  <h2 class="text-center">Categories</h2>
+
+</div>
+
+<style>
+  a:hover {
+    color: inherit; /* Use the parent element's color */
+    text-decoration: none;
+  }
+  a {
+    color: inherit; /* Use the parent element's color */
+    text-decoration: none;
+  }
+  a:focus{
+    outline: none;
+  }
+  a:active {
+    outline: none;
+  }
+
+  .row .col-md-4 {
+    text-align: left;
+  }
+
+
+</style>
+
+
+
+<div class="product-list">
+  <div class="product-item" *ngFor="let product of categories">
+    <a [routerLink]="['/category', product.id, 'furniture']" class="panel panel-primary">
+    <div class="product-image">
+      <img [src]="product.image" alt="Product Image">
+    </div>
+    <div class="product-details">
+      <h3 class="product-name">{{ product.title }}</h3>
+      <p class="product-description">{{ product.description }}</p>
+    </div>
+    </a>
+  </div>
+</div>
+
+<!-- 
+<div class="row" >
+  <div class="col-md-4" *ngFor="let category of categories" style="margin-top:5%">
+    <a [routerLink]="['/category', category.id, 'furniture']" class="panel panel-primary">
+      <div  class="panel-heading">{{ category.title }}</div>
+      <div class="panel-body">
+        <img src="{{category.image}}" class="img-responsive" style="width:100%; height: 250px;" alt="Image">
+      </div>
+      <div class="panel-footer">{{ category.description }}</div>
+    </a>
+  </div>
+</div> -->
+
+
+<br><br><br><br><br>
+<footer class="container-fluid text-center">
+  <p>Copyright &copy; ChaiRest 2023</p>
+</footer>
